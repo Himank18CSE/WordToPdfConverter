@@ -4,20 +4,23 @@ body {
 }
 
 .main {
-  height: 100vh;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: linear-gradient(135deg, #667eea, #764ba2);
+  color:black;
 }
 
 .card {
   background: white;
-  padding: 40px;
+  padding: 50px;
   border-radius: 20px;
   text-align: center;
-  width: 400px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  width: 420px;
+  max-width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
 h1 {
