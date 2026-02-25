@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import "./App.css";
 
 function App() {
@@ -37,7 +38,6 @@ function App() {
       document.body.appendChild(a);
       a.click();
       a.remove();
-
     } catch (error) {
       alert("Error converting file");
     }
@@ -46,21 +46,50 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <h1>📄 Word to PDF Converter</h1>
-      <p>Upload your .docx file and convert instantly</p>
+    <div className="main">
+      <motion.div
+        className="card"
+        initial={{ opacity: 0, y: -80 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.h1
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.6 }}
+        >
+          📄 Word to PDF Converter
+        </motion.h1>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="file"
-          accept=".docx"
-          onChange={(e) => setFile(e.target.files[0])}
-        />
+        <p>Upload your .docx file and convert instantly</p>
 
-        <button type="submit">
-          {loading ? "Converting..." : "Convert to PDF"}
-        </button>
-      </form>
+        <form onSubmit={handleSubmit}>
+          <motion.input
+            type="file"
+            accept=".docx"
+            whileHover={{ scale: 1.05 }}
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            type="submit"
+          >
+            {loading ? "Converting..." : "Convert to PDF"}
+          </motion.button>
+        </form>
+
+        {loading && (
+          <motion.div
+            className="loader"
+            animate={{ rotate: 360 }}
+            transition={{ repeat: Infinity, duration: 1 }}
+          >
+            🔄
+          </motion.div>
+        )}
+      </motion.div>
     </div>
   );
 }
