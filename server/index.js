@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const PORT = 3000;
 const multer = require("multer");
 const docxToPdf = require("docx-pdf");
 const path = require("path");
@@ -64,6 +64,6 @@ app.post('/convertfile', upload.single('file'), (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
